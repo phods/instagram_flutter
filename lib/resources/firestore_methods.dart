@@ -20,7 +20,7 @@ class FireStoreMethods {
     // asking uid here because we dont want to make extra calls to firebase auth when we can just get from our state management
     String res = "Some error occurred";
     try {
-      String photoUrl = await StorageMethods().uploadImageToStorage('posts', file, true);
+      String photoUrl = await StorageMethods().uploadImageToStorage('post', file, true);
       String postId = const Uuid().v1();
 
       Post post = Post(
@@ -39,6 +39,28 @@ class FireStoreMethods {
           );
 
       res = "success";
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+
+  //like post
+  Future<String> likePost(String postId, String uid, List likes) async {
+    String res = "Some error occurred";
+    try {
+      if (likes.contains(uid)) {
+        // if the likes list contains the user uid, we need to remove it
+        await _firestore.collection('post').doc(postId).update({
+          'likes': FieldValue.arrayRemove([uid]),
+        });
+      } else {
+        // else we need to add uid to the likes array
+        await _firestore.collection('post').doc(postId).update({
+          'likes': FieldValue.arrayUnion([uid]),
+        });
+      }
+      res = 'success';
     } catch (err) {
       res = err.toString();
     }
