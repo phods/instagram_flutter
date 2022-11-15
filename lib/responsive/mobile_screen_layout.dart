@@ -71,39 +71,48 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         children: homeScreenItems,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: mobileBackgroundColor,
+        // backgroundColor: Colors.red,
+
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
-              color: _page == 0 ? primaryColor : secondaryColor,
+              Icons.home_sharp,
+              color: (_page == 0) ? primaryColor : secondaryColor,
             ),
             label: '',
-            backgroundColor: primaryColor,
+            //backgroundColor: primaryColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              color: _page == 1 ? primaryColor : secondaryColor,
+            ),
+            label: '',
+            // backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add_circle,
-              color: _page == 1 ? primaryColor : secondaryColor,
+              color: _page == 2 ? primaryColor : secondaryColor,
             ),
             label: '',
-            backgroundColor: primaryColor,
+            // backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.favorite,
-              color: _page == 2 ? primaryColor : secondaryColor,
+              color: _page == 3 ? primaryColor : secondaryColor,
             ),
             label: '',
-            backgroundColor: primaryColor,
+            //  backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: _page == 3 ? primaryColor : secondaryColor,
+              color: _page == 4 ? primaryColor : secondaryColor,
             ),
             label: '',
-            backgroundColor: primaryColor,
+            //   backgroundColor: primaryColor,
           ),
         ],
         onTap: navigationTapped,
