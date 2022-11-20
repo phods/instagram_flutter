@@ -10,6 +10,9 @@ import 'package:instagram_flutter/screens/login_screen.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:provider/provider.dart';
 
+//    https://www.youtube.com/watch?v=mEPm9w5QlJM&ab_channel=freeCodeCamp.org
+// https://firebase.flutter.dev/docs/overview/
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {

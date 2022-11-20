@@ -13,7 +13,5 @@ List<Widget> homeScreenItems = [
   SearchScreen(),
   AddPostScreen(),
   LoginScreen(),
-  ProfileScreen(
-    uid: FirebaseAuth.instance.currentUser!.uid,
-  ),
+  ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid),
 ];
