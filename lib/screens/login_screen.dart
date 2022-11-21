@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram_flutter/screens/signup_screen.dart';
+import 'package:instagram_flutter/screens/feed_screen.dart';
+import '../screens/signup_screen.dart';
 import '../responsive/mobile_screen_layout.dart';
 import '../responsive/responsive_layout.dart';
 import '../responsive/web_screen_layout.dart';
@@ -27,35 +28,36 @@ class _LoginScreenState extends State<LoginScreen> {
     _emailController.dispose();
     _passwordController.dispose();
   }
-//----------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------
   void loginUser() async {
     setState(() {
       _isLoading = true;
     });
-    String res = await AuthMethods().loginUser(
-      email: _emailController.text,
-      password: _passwordController.text,
-    );
-    print('res $res');
-    if (res != 'success') {
-      showSnackBar(res, context);
-    } else {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const ResponsiveLayout(
-            mobileScreenLayout: MobileScreenLayout(),
-            webScreenLayout: WebScreenLayout(),
+    String res =
+        await AuthMethods().loginUser(email: _emailController.text, password: _passwordController.text);
+    if (res == 'success') {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const ResponsiveLayout(
+              mobileScreenLayout: MobileScreenLayout(),
+              webScreenLayout: WebScreenLayout(),
+            ),
           ),
-        ),
-      );
-    }
-    setState(() {
-      _isLoading = false;
-    });
-  }
-//----------------------------------------------------------------------------
+          (route) => false);
 
+      setState(() {
+        _isLoading = false;
+      });
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      showSnackBar(res, context);
+    }
+  }
+
+//----------------------------------------------------------------------------
   void navigateToSignup() {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -63,11 +65,12 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-//----------------------------------------------------------------------------
 
+//----------------------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
           padding: MediaQuery.of(context).size.width > webScreenSize

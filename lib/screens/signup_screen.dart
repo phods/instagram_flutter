@@ -2,15 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:instagram_flutter/resources/auth_methods.dart';
-import 'package:instagram_flutter/screens/login_screen.dart';
-import 'package:instagram_flutter/utils/colors.dart';
-import 'package:instagram_flutter/widgets/text_field_input.dart';
-
+import '../resources/auth_methods.dart';
+import '../screens/login_screen.dart';
+import '../widgets/text_field_input.dart';
 import '../responsive/mobile_screen_layout.dart';
 import '../responsive/responsive_layout.dart';
 import '../responsive/web_screen_layout.dart';
 import '../utils/utils.dart';
+import '../utils/colors.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -85,6 +84,7 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
+//----------------------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -10,8 +10,9 @@ import 'package:instagram_flutter/screens/login_screen.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:provider/provider.dart';
 
-//    https://www.youtube.com/watch?v=mEPm9w5QlJM&ab_channel=freeCodeCamp.org
+// https://www.youtube.com/watch?v=mEPm9w5QlJM&ab_channel=freeCodeCamp.org
 // https://firebase.flutter.dev/docs/overview/
+// https://firebase.google.com/docs/flutter/setup?platform=ios
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,8 +28,7 @@ void main() async {
     );
   } else {
     await Firebase.initializeApp(
-
-        // options: DefaultFirebaseOptions.web,
+        //options: DefaultFirebaseOptions.web,
         );
   }
   runApp(const MyApp());
@@ -36,7 +36,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -77,7 +76,6 @@ class MyApp extends StatelessWidget {
                 ),
               );
             }
-
             return const LoginScreen();
           },
         ),
